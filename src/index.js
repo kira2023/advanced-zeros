@@ -1,17 +1,17 @@
 module.exports = function getZerosCount(number, base) {
-    function factorization(number, result) {
+    function factorization(base, result) {
         result = result || [];
-        const root = Math.sqrt(number);
+        const root = Math.sqrt(base);
         let x = 2;
-        if (number % x) {
+        if (base % x) {
             x = 3;
-            while ((number % x) && (x < root)) {
+            while ((base % x) && (x < root)) {
                 x = (x + 2);
             }
         }
-        x = (x <= root) ? x : number;
+        x = (x <= root) ? x : base;
         result.push(x);
-        return (x === number) ? result : factorization((number / x), result);
+        return (x === base) ? result : factorization((base / x), result);
     };
 
     function getFactorizationObjList(factArr) {
